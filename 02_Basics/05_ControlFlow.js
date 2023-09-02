@@ -79,3 +79,18 @@ coding.forEach(function(value){
 coding.forEach(function(item,index,arr){
     console.log(item, index, arr);
 })
+
+const names=[
+    {
+        name:"Bibek",
+        age:23
+    },
+    {
+        name:"Ghosh",
+        age:24
+    }
+];
+
+names.forEach(element => {
+    console.log(element.name);
+});
