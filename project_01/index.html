@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color changer</title>
+    <style>
+        .color{
+            height: 30px;
+            width:45px ;
+            border-radius: 20px;
+            border:2px dotted black;
+            text-align: center;
+            padding-top: 8px;
+        }
+        .colors{
+            display: flex;
+            gap:30px;
+            justify-content: center;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Color Switch</h2>
+    <div class="colors">
+        <div class="color">Grey</div>
+        <div class="color">pink</div>
+        <div class="color">blue</div>
+        <div class="color">green</div>
+    </div>
+
+    <script>
+        const color=document.querySelectorAll(".color");
+        color.forEach(function(c){
+            c.style.backgroundColor=`${c.textContent}`;
+
+            c.addEventListener('click',function(e){
+                document.body.style.backgroundColor=c.textContent;
+                console.log("clicked");
+            })
+        });
+
+    </script>
+</body>
+</html>
