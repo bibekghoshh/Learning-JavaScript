@@ -3,17 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dom</title>
+    <title id="title" class="dom-title">Dom</title>
 </head>
 <body>
     <div class="bg=black">
         <!-- <title>Javascript is a asynchonus</title> -->
-        <h1 class="heading">learning javascript is fun</h1>
+        <h1 class="heading" id="head">learning javascript is fun</h1>
         <p>After that react</p>
+
+        <ul>
+            <li class="list-item">Village</li>
+            <li class="list-item">City</li>
+            <li class="list-item">Country</li>
+        </ul>
     </div>
 
     <script>
-        document.getElementsByTagName(body).style.backgroundColor="#456789"
+        document.body.style.backgroundColor="#456789";
+        const title=document.getElementById('title');
+        // console.log(title);
+        // console.log(title.className);
+        // console.log(title.getAttribute('id'));
+        // title.setAttribute('class','test');
+        title.innerHTML='Bibek';
+
+        const heading=document.getElementById("head");
+        // console.log(heading);
+        heading.innerHTML="<h3>Learning javascript is interesting</h3>";
+        heading.style.backgroundColor='green';
+        heading.textContent="i am learning"
+        heading.style.padding="25px"
+        heading.style.borderRadius="100px"
+
+        const head=document.getElementsByClassName("head");
+      
+
+        const li=document.querySelectorAll('li');
+        console.log(li); //it return NodeList
+        li.forEach(function(l){
+            l.style.backgroundColor='green';
+        })
+
+        let list_item=document.getElementsByClassName("list-item");
+        console.log(list_item); // it return HTML collection
+
+        list_item=Array.from(list_item);
+        console.log(list_item);
+
+        list_item.forEach(function(li){
+            li.style.backgroundColor="red";
+        })
+
+
     </script>
 </body>
 </html>
