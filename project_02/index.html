@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body{
+            background-color: slategray;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap:30px;
+            align-items: center;
+        }
+        #form{
+            /* background-color: rgb(50, 59, 135); */
+            width: 300px;
+        }
+        #weight{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>BMI Calculator</h2>
+    <form id="form">
+        <label for="">Height in CM</label>
+        <input type="number" name="number" id="height"><br>
+        <label for="">Weight in KG</label>
+        <input type="number" name="number" id="weight"><br>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="down-side">
+        <h2 id="result"></h2> <br>
+    <p>BMI Weight Guide</p>
+    <ui>
+        <li>Under weight = less then 18.6</li>
+        <li>Normal Weight= 18.6 to 24.9</li>
+        <li>OverWeight = greater then 25</li>
+    </ui>
+    </div>
+
+    <script>
+        const form=document.querySelector("form");
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+
+            let height=parseInt(document.getElementById("height").value);
+            const weight=parseInt(document.getElementById("weight").value);
+            const result=document.getElementById("result");
+            // console.log(height);
+            if(height ==="" || height<=0 || isNaN(height) ||
+            weight ==="" || weight<=0 || isNaN(weight)){
+                result.textContent="Please Give Valid Input";
+            }else{
+                height=height/100;
+                height=height*height;
+                const bmi=weight/height;
+                result.innerHTML=`your BMI is =${bmi.toFixed(2)}`;
+            }
+            console.log("Clicked")
+        })
+    </script>
+</body>
+</html>
