@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gusses the Number</title>
+    <style>
+      body {
+        text-align: center;
+        background-color: #843841;
+      }
+      input {
+        padding: 10px;
+      }
+      button{
+        padding: 10px 10px;
+        background-color: rgb(62, 19, 135);
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        font-weight: 500;
+        margin-left: 10px;
+      }
+      #message {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        number guessing game try and guess a random number between 1 and 100
+      </h3>
+      <h3>You have 10 attempts to guess the right number</h3>
+    </header>
+
+    <div>
+      <p>Guess the Number</p>
+      <input type="number" name="number" id="number" />
+      <button id="submit">Submit guess</button> <br />
+    </div>
+
+    <div>
+      <p id="message">User Message</p>
+      <p id="previews-guess">Previews Guess:</p>
+      <p id="guess-remaining">Guesses Remaining: 10</p>
+      <button id="start-over">Start Over</button>
+    </div>
+
+    <script>
+      let randomNumber = parseInt(Math.random() * 100 + 1);
+      let status=true;
+
+      const submit = document.getElementById("submit");
+      const message = document.getElementById("message");
+      const previews_guess = document.getElementById("previews-guess");
+      const guess_Remaining = document.getElementById("guess-remaining");
+      const startOver=document.getElementById("start-over");
+
+      let guesses = [];
+
+      if(status){
+      submit.addEventListener("click", function () {
+        const number = parseInt(document.getElementById("number").value);
+        if(number === "" || isNaN(number) || number<0 || number >100){
+          displayMessage("Give a Vaild input");
+        }else{
+          checkNumbers(number, randomNumber);
+          guesessFun(number);
+          remaining();
+        }
+        
+      });
+    }
+      function remaining(){
+        let g=10-(guesses.length);
+        guess_Remaining.innerHTML=`Guesses Remaining :- ${g}`;
+        if(g===0){
+          status=false;
+        }
+      }
+      function checkNumbers(number, randomNumber) {
+        if (number === randomNumber) {
+          message.textContent = "You Guessed The RIGHT number";
+          status=false;
+          submit.disabled=true;
+        } else if (number < randomNumber) {
+          displayMessage("Try with Little Higher");
+          setTimeout(function () {
+            displayMessage("Try Again");
+          }, 3500);
+        } else if (number > randomNumber) {
+          displayMessage("Try with little Lower");
+          setTimeout(function () {
+            displayMessage("Try Again");
+          }, 3500);
+        }
+        console.log("Clicked");
+        console.log(number);
+        console.log(randomNumber);
+      }
+
+      function guesessFun(n) {
+        guesses.push(n);
+        previews_guess.innerHTML = `Previews Guesses :- ${guesses}`;
+      }
+
+      function displayMessage(m) {
+        message.style.visibility = "visible";
+        message.textContent = m;
+      }
+
+      startOver.addEventListener('click',function(){
+        submit.disabled=false;
+        guesses=[];
+        previews_guess.innerHTML = `Previews Guesses :- ${guesses}`;
+        guess_Remaining.innerHTML=`Guesses Remaining :- 10`;
+        displayMessage("");
+        status=true;
+      });
+
+    </script>
+  </body>
+</html>
