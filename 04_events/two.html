@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>I am a frondend Developer</h2>
+    <button id="stop">STOP</button>
+
+    <script>
+        setTimeout(function(){
+            console.log("Bibek");
+        },2000);
+
+        const sayName=function(){
+            console.log("My name is bibek");
+        }
+        setTimeout(sayName,3000);
+
+        const changeText=function(){
+            document.querySelector("h2").innerHTML="Land a job first Study hard";
+        };
+        const changeme=setTimeout(changeText,3000);
+        document.getElementById("stop").addEventListener('click',function(){
+            clearTimeout(changeme);
+        });
+    </script>
+</body>
+</html>
